@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pepa big</title>
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <script>
+    let canvas = document.querySelector('canvas');
+    let context = canvas.getContext('2d');
+
+    context.fillStyle = 'rgb(123, 104, 238, 0.2)';
+    context.fillRect(100, 100, 400, 400);
+
+    context.lineWidth = 4;
+    context.beginPath();
+    context.rect(120, 120, 400, 400);
+    context.stroke();
+  
+    context.lineWidth = 2;
+    // context.beginPath();
+    // context.arc(110, 110, 100, 0, Math.PI * 2);
+    // context.stroke();
+
+    const width = 60;
+    const height = 60;
+    const gap = 30;
+    let x, y;
+    let redish = 123;
+    let greenish = 104;
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        x = 80 + (gap + width) * i;
+        y = 80 + (gap + height) * j;
+  
+        context.beginPath();
+        context.rect(x, y, width, height);
+        context.stroke();
+
+        if (Math.random() > 0.5) {
+          context.beginPath();
+          context.rect(x + 8, y + 8, width - 15, height - 15);
+
+          greenish = getRandomInt(256);
+          redish = getRandomInt(256)
+
+
+          context.fillStyle = `rgb(${redish}, ${greenish}, 238, 0.5)`;
+          context.fill();
+        }
+      }
+    }
+
+  </script>
+</body>
+</html>
